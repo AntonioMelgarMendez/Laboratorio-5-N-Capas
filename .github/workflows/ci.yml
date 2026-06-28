@@ -17,7 +17,7 @@ jobs:
       - name: JDK-configuration
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
           cache: maven
 
@@ -57,7 +57,7 @@ jobs:
       - name: wait-response
         run: |
           for i in $(seq 1 15); do
-            if curl -s http://localhost:8080/api/role/get/nonexistent -o /dev/null; then
+            if curl -s http://localhost:8080/api/tasks -o /dev/null; then
               echo "The application responded correctly."
               exit 0
             fi
